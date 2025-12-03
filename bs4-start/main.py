@@ -17,13 +17,11 @@
 from bs4 import BeautifulSoup
 import requests
 response=requests.get(url="https://web.archive.org/web/20200518073855/https://www.empireonline.com/movies/features/best-movies-2/")
-# print(response.fin)
 soup=BeautifulSoup(response.text,"html.parser")
-# print(soup.title)
 headings=soup.find_all(name="h3",class_="title")
+
 move_heading=[heading.getText() for heading in headings]
 move_heading.reverse()
-move_tit_hed=[]
 for move in move_heading:
     with open("bestmove", "a", encoding="utf-8") as topmove:
         topmove.write(move+ "\n")
